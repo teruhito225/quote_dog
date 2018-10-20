@@ -9,10 +9,10 @@ import random
 import os
 
 LINE_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
-YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
+LINE_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
 
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
-parser = WebhookParser(YOUR_CHANNEL_SECRET)
+parser = WebhookParser(LINE_CHANNEL_SECRET)
 
 from django.shortcuts import render
 
