@@ -40,14 +40,18 @@ def callback(request):
         if not isinstance(event.message, TextMessage):
             continue
 
-        if event.message.text.contains("名言教えて"):
+        message = ""
+        if event.message.text in "名言教えて":
             quotes = list(Quote.objects.all())
             selected_quote = random.choice(quotes)
-            message = selected_quote[1] + "\n" + selected_quote[2]
-            text_send_message = TextSendMessage(text = message)
-            line_bot_api.reply_message(
-                event.reply_token,
-                text_send_message
-            )   
+            message = selected_quote.text + "\n\n" + selected_quote.human
+        else:
+            message = "ワン！"
+
+        text_send_message = TextSendMessage(text = message)
+        line_bot_api.reply_message(
+            event.reply_token,
+            text_send_message
+        )   
         
     return HttpResponse(status=200)
