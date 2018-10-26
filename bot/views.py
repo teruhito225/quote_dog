@@ -41,7 +41,7 @@ def callback(request):
             continue
 
         message = ""
-        if event.message.text in "名言教えて":
+        if "名言教えて" in event.message.text:
             quotes = list(Quote.objects.all())
             selected_quote = random.choice(quotes)
             message = selected_quote.text + "\n\n" + selected_quote.human
